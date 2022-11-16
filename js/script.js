@@ -43,18 +43,21 @@ Dichiariamo chi ha vinto.*/
 
 //creo prompt tolowercase
 let pariDispari = prompt("Scegli pari o dispari!").toLowerCase();
+
 //check input pari/dispari con redirect
 while (pariDispari !== "pari" && pariDispari !== "dispari"){
     alert ("puoi inserire solo ''pari'' o ''dispari''");
     pariDispari = prompt("Scegli pari o dispari!").toLowerCase();
 }
+console.log("Hai scelto " + pariDispari);
 //creo input intero
 let numeroScelto = parseInt(prompt("Inserisci un numero intero da 1 a 5"));
 //check input da 1 a 5
 while (numeroScelto >= 6 || numeroScelto <= 0){
     alert ("Puoi inserire solo numeri interi da 1 a 5");
-    numeroScelto = prompt("Inserisci un numero intero da 1 a 5");
+    numeroScelto = parseInt(prompt("Inserisci un numero intero da 1 a 5"));
 }
+console.log("Hai inserito " + numeroScelto);
 
 //creo funzione randomizzante limitata 
 function randomizzatoreLimits(min, max) {
@@ -63,7 +66,30 @@ function randomizzatoreLimits(min, max) {
   }
 
   let numeroSceltoCPU = randomizzatoreLimits(1,5);
-  console.log(numeroSceltoCPU);
+  console.log("Il Computer ha scelto " + numeroSceltoCPU);
+
+//sommo il numero generato dalla CPU e scelto dall' utente
+
+let somma = (numeroSceltoCPU + numeroScelto);
+
+//definisco la funzione per capire se il numero è pari o dispari
+function isPariDispari(num){
+    if (num%2 == 0){
+        return "pari";
+    }else{
+        return "dispari";
+    }
+}
+//Lancio la somma dei numeri in pasto alla funzione
+let risultatoFinale = isPariDispari(somma);
+//comparo il return della funzione con la scelta forzata dell' utente "pari" o "dispari"
+if (risultatoFinale == pariDispari){
+    console.log("Complimenti hai vinto!");
+}else{
+    console.log("Purtroppo hai perso, aggiorna e riprova!");
+}
+
+
 
 
 
